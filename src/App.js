@@ -1,14 +1,12 @@
 import React from "react";
-
+import "./style.css";
 function App() {
-  const divstyle = {
-    color: "red",
-    backgroundColor: "powderblue",
-    fontSize: "larger",
-    padding: "3px",
-  };
-
-  return <div style={divstyle}>Hello</div>;
+  return (
+    <>
+      <h2>DevelopThai.com</h2>
+      <div className="title">React & React Naive</div>
+    </>
+  );
 }
 
 export default App;
