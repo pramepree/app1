@@ -1,15 +1,14 @@
 import React from "react";
 
 function App() {
-  let r = '<b>React</b>';
-  let rn = "React Native";
-  const el = (
-    <div>
-      Create Web & Moblie Apps <br />
-      wiht <span dangerouslySetInnerHTML={{__html:r}}/> & {rn}
-    </div>
-  )
-  return el
+  const divstyle = {
+    color: "red",
+    backgroundColor: "powderblue",
+    fontSize: "larger",
+    padding: "3px",
+  };
+
+  return <div style={divstyle}>Hello</div>;
 }
 
 export default App;
