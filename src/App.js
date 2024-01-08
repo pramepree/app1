@@ -1,10 +1,14 @@
 import React from "react";
-import "./style.css";
+import { Content, Footer, Header } from "./func-components";
+import Calender from "./class-conponents";
 function App() {
   return (
     <>
-      <h2>DevelopThai.com</h2>
-      <div className="title">React & React Naive</div>
+      <Header/>
+      <p><center><Calender/></center></p>
+      <Content/>
+      <Footer/>
+      
     </>
   );
 }
