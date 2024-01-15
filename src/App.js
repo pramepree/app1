@@ -6,4 +6,4 @@ function App() {
   return <EventData2/>
 }
 
-export default App;//test
+export default App;
