@@ -1,9 +1,9 @@
 import React from 'react'
 import Button from './class-components';
-import { EventData2 } from './event-data';
+import { Calculator } from './calculator';
 
 function App() {
-  return <EventData2/>
+  return <Calculator/>
 }
 
 export default App;
