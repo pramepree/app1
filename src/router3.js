@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-
 import "./navlink.css";
 import Products from "./products";
 import Home from "./home";
-import { BrowserRouter, Link } from "react-router-dom";
+import Member from "./member";
+
 
 export default function Router3() {
   return (
@@ -47,10 +47,7 @@ export default function Router3() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/member" Component={Member} />
-        <Route
-          path="/contact"
-          element={<div style={{ textAlign: "center" }}>Contact Page</div>}
-        />
+        <Route path="/contact" element={<div style={{ textAlign: "center" }}>Contact Page</div>}/>
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
