@@ -8,18 +8,16 @@ export default function Router2() {
       <nav className="nav">
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? "action_menu" : "menu")}
-          style={({ isActive }) => {
-            return {
-              fontWeight: isActive ? "bold" : "",
-            };
-          }}
+          className={({ isActive }) => (isActive ? "active_menu" : "menu")}
+          style={({ isActive }) => ({
+            fontWeight: isActive ? "bold" : "",
+          })}
         >
           Home
         </NavLink>
         -&nbsp;
         <NavLink
-          to="/Product"
+          to="/product"
           className={({ isActive }) => (isActive ? "active_menu" : "menu")}
         >
           Product
@@ -29,14 +27,14 @@ export default function Router2() {
           to="/member"
           className={({ isActive }) => (isActive ? "active_menu" : "menu")}
         >
-          member
+          Member
         </NavLink>
         -&nbsp;
         <NavLink
           to="/contact"
           className={({ isActive }) => (isActive ? "active_menu" : "menu")}
         >
-          contact
+          Contact
         </NavLink>
       </nav>
     </BrowserRouter>

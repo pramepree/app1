@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { BrowserRouter, NavLink, Route, Routes, Navigate } from "react-router-dom";
 import "./navlink.css";
 import Products from "./products";
 import Home from "./home";
 import Member from "./member";
-
 
 export default function Router3() {
   return (
@@ -13,11 +12,9 @@ export default function Router3() {
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "active_menu" : "menu")}
-          style={({ isActive }) => {
-            return {
-              fontWeight: isActive ? "bold" : "",
-            };
-          }}
+          style={({ isActive }) => ({
+            fontWeight: isActive ? "bold" : "",
+          })}
         >
           Home
         </NavLink>{" "}
@@ -46,8 +43,8 @@ export default function Router3() {
       <Routes style={{ margin: "20px" }}>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/member" Component={Member} />
-        <Route path="/contact" element={<div style={{ textAlign: "center" }}>Contact Page</div>}/>
+        <Route path="/member" element={<Member />} />
+        <Route path="/contact" element={<div style={{ textAlign: "center" }}>Contact Page</div>} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
