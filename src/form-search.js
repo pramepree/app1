@@ -16,7 +16,7 @@ export default function FromSearch() {
         <input
           type="text"
           name="kw"
-          placeholder=".........."
+          placeholder="ค้นหา"
           ref={textKw}
           onInput={onChangeKw}
         />
