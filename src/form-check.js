@@ -1,27 +1,30 @@
 import React, { useRef, useState } from 'react';
 
 export default function FormCheck() {
-    const switchRef = useRef();
-    const [checkedStyle, setCheckedStyle] = useState([]);
-    const [checkedSize, setCheckedSize] = useState('');
-    const size = ['Small', 'Medium', 'Large'];
+    const styles = ['bold', 'italic', 'underline'];
+    const sizes = ['small', 'medium', 'large', 'larger'];
+    let checkedStyles = [];
+    let checkedSize = '';
+    const switchReq = useRef();
 
     const onChangeCheck = (event) => {
-        const value = event.target.value;
-        if (event.target.checked) {
-            setCheckedStyle((prevStyles) => [...prevStyles, value]);
+        let checked = event.target.checked;
+        let value = event.target.value;
+        let idx = checkedStyles.indexOf(value);
+        if (checked && idx === -1) {
+            checkedStyles.push(value);
         } else {
-            setCheckedStyle((prevStyles) => prevStyles.filter((style) => style !== value));
+            checkedStyles.splice(idx, 1);
         }
     };
 
     const onChangeRadio = (event) => {
-        setCheckedSize(event.target.value);
+        checkedSize = event.target.value;
     };
 
     const onClickButton = () => {
-        if (switchRef.current.checked) {
-            if (checkedStyle.length === 0) {
+        if (switchReq.current.checked) {
+            if (checkedStyles.length === 0) {
                 alert('Please select style');
                 return;
             } else if (checkedSize === '') {
@@ -29,37 +32,39 @@ export default function FormCheck() {
                 return;
             }
         }
-        let msg = 'Selected style(s): ' + checkedStyle.join(',');
-        msg += '\nSelected size: ' + checkedSize;
+        let msg = 'selected style(s): ' + checkedStyles.join(', ');
+        msg += '\nselected size: ' + checkedSize;
         alert(msg);
     };
 
     return (
-        <div className='mt-4 mx-auto p-3' style={{ width: '450px', background: '#cee' }}>
+        <div className="mt-4 mx-auto p-3 rounded" style={{ width: '450px', background: '#cee' }}>
             <form>
-                <span>Font style</span>&nbsp;&nbsp;
-                {size.map((st, i) => (
-                    <div className='form-check form-check-inline mb-2' key={i}>
-                        <input type='checkbox' id={'check' + i} value={st} onChange={onChangeCheck} />
-                        <label htmlFor={'check' + i}>{st}</label>
-                    </div>
-                ))}
+                <span>font style:</span>&nbsp;&nbsp;
+                {styles.map((st, i) => {
+                    return (
+                        <div key={i} className="form-check form-check-inline mb-2">
+                            <input type="checkbox" id={'check' + i} value={st} className="form-check-input" onChange={onChangeCheck} />
+                            <label htmlFor={'check' + i} className="form-check-label">{st}</label>
+                        </div>
+                    );
+                })}
                 <br />
                 <span>font size:</span>&nbsp;&nbsp;
-                {
-                    size.map((st, i) => (
-                        <div className='form-check form-check-inline mb-2' key={i}>
-                            <input type='radio' id={'radio' + i} value={st} name='fontSize' className='form-check-input' onChange={onChangeRadio} />
-                            <label htmlFor={'radio' + i}>{st}</label>
+                {sizes.map((sz, i) => {
+                    return (
+                        <div key={i} className="form-check form-check-inline mb-2">
+                            <input type="radio" id={'radio' + i} name="fontSize" value={sz} className="form-check-input" onChange={onChangeRadio} />
+                            <label htmlFor={'radio' + i} className="form-check-label">{sz}</label>
                         </div>
-                    ))
-                }
-                <div className='form-check form-switch mt-3'>
-                    <input type='checkbox' id='sw' value={'require'} className='form-check-input' ref={switchRef} />
-                    <label htmlFor='sw' className='form-check-label'> Required</label>
+                    );
+                })}
+                <div className="form-check form-switch mt-3">
+                    <input type="checkbox" id="sw" value="require" className="form-check-input" ref={switchReq} />
+                    <label htmlFor="sw" className="form-check-label">Switch</label>
                 </div>
-                <div className='text-center mt-4'>
-                    <button type='button' onClick={onClickButton} className='btn btn-sm px-4'>OK</button>
+                <div className="text-center mt-4">
+                    <button type="button" className="btn btn-sm px-4" onClick={onClickButton}>OK</button>
                 </div>
             </form>
         </div>
